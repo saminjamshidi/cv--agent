@@ -51,3 +51,72 @@ Open a terminal and pull the required models:
 ```bash
 ollama pull llama3.2
 ollama pull mxbai-embed-large
+
+### 3. Clone & Set Up the Project
+
+```bash
+git clone <your-repo-url>
+cd <your-repo-name>
+pip install -r requirements.txt
+```
+
+---
+
+### 4. Add Your CV
+
+- Place your CV in the root directory.
+- Rename it to `cv.pdf`.
+- (Optional) If you use a different name, update the `PDF_PATH` variable in `vector.py`.
+
+---
+
+### 5. Create the Vector Database
+
+Run the ingestion script to process your CV and create the Chroma database:
+
+```bash
+python vector.py
+```
+
+> A folder named `cv_chroma_db` will be created. This only needs to be done once.
+
+---
+
+### 6. Run the Chatbot Agent
+
+```bash
+python my_agent.py
+```
+
+Type your questions and interact with the chatbot.  
+To quit, type `q` and press **Enter**.
+
+---
+
+## 🔧 Configuration
+
+You can adjust the following variables at the top of both `vector.py` and `my_agent.py`:
+
+| Variable            | Description                                           | Default              |
+|----------------------|--------------------------------------------------------|------------------------|
+| `PDF_PATH`           | Path to your CV file                                   | `./cv.pdf`            |
+| `DB_LOCATION`        | Directory where the Chroma database is stored          | `./cv_chroma_db`      |
+| `EMBEDDING_MODEL`    | Ollama model used for creating text embeddings         | `mxbai-embed-large`   |
+| `LLM_MODEL`          | Ollama model used for generating answers              | `llama3.2`            |
+
+---
+
+## 📝 Summary
+
+- **Ingest your CV once** using `vector.py`.
+- **Run the chatbot** using `my_agent.py`.
+- **Ask questions** and receive responses directly from your CV content.
+- Fully local solution — no data leaves your machine.
+
+---
+
+## 📚 References
+
+- [Ollama](https://ollama.com/)
+- [LangChain](https://www.langchain.com/)
+- [ChromaDB](https://www.trychroma.com/)
