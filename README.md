@@ -52,6 +52,8 @@ Open a terminal and pull the required models:
 ollama pull llama3.2
 ollama pull mxbai-embed-large
 
+```
+
 ### 3. Clone & Set Up the Project
 
 ```bash
